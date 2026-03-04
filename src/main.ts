@@ -66,28 +66,76 @@ function applyCream(input: HTMLInputElement): void {
 }
 
 function applySyrup(input: HTMLInputElement): void {
-  // TODO: implement this function
+  const syrupElements = document.getElementsByClassName("syrup");
+
+  if (syrupElements.length === 0) return;
+
+  const syrupDiv = syrupElements[0] as HTMLDivElement;
+
+  const color = syrups[input.value];
+  if (!color) return;
+
+  syrupDiv.style.setProperty("--syrup-color", color);
 }
 
 function setupSyrupListeners(): void {
-  // TODO: implement this function
+  const inputs = document.querySelectorAll<HTMLInputElement>('input[name="syrup"]');
+
+  inputs.forEach((input) => {
+    input.addEventListener("change", () => {
+      applySyrup(input);
+    });
+
+    if (input.checked) {
+      applySyrup(input);
+    }
+  });
 }
 
 setupSyrupListeners();
 
 function setupCreamListeners(): void {
-  // TODO: implement this function
+  const inputs = document.querySelectorAll<HTMLInputElement>('input[name="cream"]');
+
+  inputs.forEach((input) => {
+    input.addEventListener("change", () => {
+      applyCream(input);
+    });
+
+    if (input.checked) {
+      applyCream(input);
+    }
+  });
 }
 setupCreamListeners();
 
 function setupTemperatureListeners(): void {
-  // TODO: implement this function
+  const inputs = document.querySelectorAll<HTMLInputElement>('input[name="temperature"]');
+
+  inputs.forEach((input) => {
+    input.addEventListener("change", () => {
+      applyTemperature(input);
+    });
+
+    if (input.checked) {
+      applyTemperature(input);
+    }
+  });
 }
 
 setupTemperatureListeners();
 
 function setupBaseListeners(): void {
-  // TODO: implement this function
-}
+  const inputs = document.querySelectorAll<HTMLInputElement>('input[name="base"]');
 
+  inputs.forEach((input) => {
+    input.addEventListener("change", () => {
+      applyBase(input);
+    });
+
+    if (input.checked) {
+      applyBase(input);
+    }
+  });
+}
 setupBaseListeners();
